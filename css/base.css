@@ -1,6 +1,19 @@
 @charset "utf-8";
 
 h1 {
+    /* 中央に固定 */
     text-align: center;
 }
+
+footer {
+    /* 絶対位置 */
+    position: absolute;
+    /* 右下に固定 */
+    bottom: 0;
+    right: 0;
+    padding-right: 15px;
+    
+}
+
+/* id */
 
