@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
-    <!-- 各種設定 -->
+    <!-- 文字コード -->
     <meta charset="UTF-8">
+    <!-- IEに対する設定 -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- ディスプレイサイズに対する設定 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 作成者 -->
+    <meta name="author" content="IK-20211125">
+    <!-- 検索した時に下に出る説明 -->
+    <meta name="description" content="Site for IK-20211125">
+    <!-- キーワード(Chromeだと反応しない) -->
+    <meta name="keywords" content="IK,IK-20211125">
     <!-- CSS読込 -->
     <link rel="stylesheet" href="css/base.css">
     <!-- アイコン -->
@@ -24,11 +32,19 @@
 
     <main>
         <h2>文字数カウント</h2>
+        <form>
+            <label for="inputText">テキスト入力</label><br>
+            <textarea id="inputText" rows="10" cols="64" oninput="countCharacters()"></textarea>
+        </form>
+
+        <p>■文字数（スペース込み）：<span id="characterCount">0</span></p>
+        <p>■文字数（スペース無視）：<span id="characterCountNS">0</span></p>
+
     </main>
 
     <footer>
         <section>
-            <p id="link_github"><a href="https://github.com/IK-20211125">GitHub</a></p>
+            <a href="https://github.com/IK-20211125">GitHub</a>
         </section>
     </footer>
 
