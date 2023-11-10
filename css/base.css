@@ -32,6 +32,8 @@ h1 {
     padding-top: 13px;
     padding-bottom: 13px;
 
+    /* フォント */
+    font-family: cursive;
     /* 中央に固定 */
     text-align: center;
     /* 文字色 */
