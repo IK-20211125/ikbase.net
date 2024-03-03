@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>IK-20211125</title>
+    <title>IK-20211125のウェブサイト on IK-20211125</title>
     <link>/</link>
-    <description>Recent content on IK-20211125</description>
+    <description>Recent content in IK-20211125のウェブサイト on IK-20211125</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>&amp;copy; 2024 IK</copyright>
-    <lastBuildDate></lastBuildDate>
+    <lastBuildDate>Sun, 03 Mar 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GitHubPagesとHugoCongoでブログを作成する手順</title>
+      <link>/blog/2024/03/03/hugo-congo/</link>
+      <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>/blog/2024/03/03/hugo-congo/</guid>
+      <description>test</description>
+    </item>
   </channel>
 </rss>
