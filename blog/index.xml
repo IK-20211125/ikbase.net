@@ -7,8 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>&amp;copy; 2024 IK</copyright>
-    <lastBuildDate>Sun, 03 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 06 Apr 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MacBookへのpowerline-shell導入手順</title>
+      <link>/blog/2024/04/06/powerline-shell/</link>
+      <pubDate>Sat, 06 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>/blog/2024/04/06/powerline-shell/</guid>
+      <description>はじめに #こんにちは、IKです。</description>
+    </item>
     <item>
       <title>GitHubPagesとHugoCongoでブログを作成する手順</title>
       <link>/blog/2024/03/03/hugo-congo/</link>
