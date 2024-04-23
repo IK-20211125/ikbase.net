@@ -32,8 +32,6 @@ categories:
 
 ## GitHub Actionsを用いてのビルド
 
-今回は、かなり簡単な手順になります。
-
 下記のサイト（公式）を参照して、GitHubActionsを導入しました。
 
 [Host on GitHub Pages](https://gohugo.io/hosting-and-deployment/hosting-on-github/)
@@ -43,7 +41,7 @@ categories:
 
 ## 静的にビルドする方法
 
-先日に作成した下記の記事で紹介しています。
+以前に公開した下記の記事で紹介しています。
 
 [GitHubPagesとHugoCongoでブログを作成する手順](https://ik-20211125.github.io/blog/2024/03/03/hugo-congo/)
 
