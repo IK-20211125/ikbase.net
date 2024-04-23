@@ -1,0 +1,24 @@
+languageCode = "ja"
+languageName = "Japanese"
+# languageDirection = "ltr"
+weight = 1
+
+title = "IK-20211125"
+copyright = "&copy; 2024 IK"
+
+[params]
+  dateFormat = "2006/01/02"
+  isoCode = "ja"
+  displayName = ":flag-jp:"
+  rtl = false
+  # mainSections = ["section1", "section2"]
+  description = "IK-20211125のサイト。"
+
+[params.author]
+  name = "IK"
+  image = "img/author.png"
+  headline = "セキュリティ専門家"
+  bio = "セキュリティ専門家"
+  links = [
+     { github = "https://github.com/IK-20211125" },
+  ]
