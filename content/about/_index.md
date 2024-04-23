@@ -18,8 +18,8 @@ categories: [About]
 
 2021年11月25日からGitHubを利用しているため、IK-20211125。
 
-## 旧 GitHub Pages
+<!-- ## 旧 GitHub Pages
 
-[文字数チェッカー](https://IK-20211125.github.io/checker.html)
+[文字数チェッカー](https://IK-20211125.github.io/checker.html) -->
 
 ## 関連記事
