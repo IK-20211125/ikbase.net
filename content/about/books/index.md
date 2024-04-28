@@ -8,8 +8,6 @@ tags:
 categories:
 ---
 
-## セキュリティ系おすすめ書籍
-
 
 - [マルウエアの教科書 増補改訂版](https://bookplus.nikkei.com/atcl/catalog/23/08/02/00939/)
 
