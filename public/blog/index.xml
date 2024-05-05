@@ -2,25 +2,53 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog on IK-20211125</title>
-    <link>/blog/</link>
+    <link>http://localhost:1313/blog/</link>
     <description>Recent content in Blog on IK-20211125</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo 0.125.1</generator>
     <language>ja</language>
     <copyright>&amp;copy; 2024 IK</copyright>
-    <lastBuildDate>Sat, 06 Apr 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 May 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CVE関連の用語まとめてみた</title>
+      <link>http://localhost:1313/blog/2024/05/05/cve/</link>
+      <pubDate>Sun, 05 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/2024/05/05/cve/</guid>
+      <description>はじめに #こんにちは、IKです。</description>
+    </item>
+    <item>
+      <title>共通鍵暗号方式に使われる排他的論理和の性質</title>
+      <link>http://localhost:1313/blog/2024/05/04/key-xor/</link>
+      <pubDate>Sat, 04 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/2024/05/04/key-xor/</guid>
+      <description>はじめに #こんにちは、IKです。</description>
+    </item>
+    <item>
+      <title>Hugo&#43;GitHubPagesにGoogleAnalyticsを埋め込み、GoogleSearchConsoleに対応させた手順</title>
+      <link>http://localhost:1313/blog/2024/04/28/google-analytics/</link>
+      <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/2024/04/28/google-analytics/</guid>
+      <description>はじめに #こんにちは、IKです。</description>
+    </item>
+    <item>
+      <title>HugoをGitHubActionsでビルド、デプロイした手順</title>
+      <link>http://localhost:1313/blog/2024/04/23/github-actions/</link>
+      <pubDate>Tue, 23 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/2024/04/23/github-actions/</guid>
+      <description>はじめに #こんにちは、IKです。</description>
+    </item>
     <item>
       <title>MacBookへのpowerline-shell導入手順</title>
-      <link>/blog/2024/04/06/powerline-shell/</link>
+      <link>http://localhost:1313/blog/2024/04/06/powerline-shell/</link>
       <pubDate>Sat, 06 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>/blog/2024/04/06/powerline-shell/</guid>
+      <guid>http://localhost:1313/blog/2024/04/06/powerline-shell/</guid>
       <description>はじめに #こんにちは、IKです。</description>
     </item>
     <item>
       <title>GitHubPagesとHugoCongoでブログを作成する手順</title>
-      <link>/blog/2024/03/03/hugo-congo/</link>
+      <link>http://localhost:1313/blog/2024/03/03/hugo-congo/</link>
       <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>/blog/2024/03/03/hugo-congo/</guid>
+      <guid>http://localhost:1313/blog/2024/03/03/hugo-congo/</guid>
       <description>はじめに #こんにちは、IKです。</description>
     </item>
   </channel>
