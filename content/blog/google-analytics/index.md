@@ -1,5 +1,5 @@
 ---
-title: Hugo+GitHubPagesにGoogleAnalyticsを埋め込み、GoogleSearchConsoleに対応させた手順
+title: Hugo+GitHubPagesをGoogleSearchConsoleに対応させた手順
 description: Hugo&GitHubPagesにGoogleAnalyticsを埋め込み、GoogleSearchConsoleに対応させた手順
 date: 2024-04-28
 draft: false
@@ -7,6 +7,8 @@ tags:
 categories:
   - blog
 ---
+
+Hugo&GitHubPagesにGoogleAnalyticsを埋め込み、GoogleSearchConsoleに対応させた手順
 
 ## はじめに
 

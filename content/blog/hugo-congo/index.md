@@ -9,6 +9,8 @@ categories:
   - blog
 ---
 
+Hugoのテーマの一つCongoとGitHub Pagesでブログを作りました。
+
 ## はじめに
 
 こんにちは、IKです。

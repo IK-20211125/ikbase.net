@@ -8,6 +8,8 @@ categories:
   - blog
 ---
 
+Hugoで作成したブログをGitHub Actionsを用いてビルドからデプロイまで行いました。
+
 ## はじめに
 
 こんにちは、IKです。

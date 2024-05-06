@@ -8,6 +8,8 @@ categories:
   - blog
 ---
 
+まず、powerline-shellのインストール、環境構築から始めます。
+
 ## はじめに
 
 こんにちは、IKです。<br>
