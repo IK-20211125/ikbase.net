@@ -59,20 +59,17 @@ jobs:
           hugo \
             --gc \
             --minify \
-            --baseURL "ikbase.net/"          
+            --baseURL "${{ steps.pages.outputs.base_url }}/"          
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
-      # - name: Set up custom domain
-      #   run: |
-      #     echo "ikbase.net" > ./public/CNAME
 
   # Deployment job
   deploy:
     environment:
       name: github-pages
-      url: ikbase.net
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
     steps:
