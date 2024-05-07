@@ -15,3 +15,13 @@ categories:
 
 
 ---
+
+## SC対策おすすめ書籍
+
+
+- [2024 情報処理安全確保支援士「専門知識+午後問題」の重点対策](https://www.itec.co.jp/store/products/detail.php?product_id=3855)
+
+- [うかる！ 情報処理安全確保支援士 午後問題集 第2版 ](https://bookplus.nikkei.com/atcl/catalog/23/05/11/00810/)
+
+
+---
