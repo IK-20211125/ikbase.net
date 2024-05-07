@@ -3,7 +3,7 @@ languageName = "Japanese"
 # languageDirection = "ltr"
 weight = 1
 
-title = "IK-20211125"
+title = "IK"
 copyright = "&copy; 2024 IK"
 
 [params]
@@ -12,7 +12,7 @@ copyright = "&copy; 2024 IK"
   displayName = ":flag-jp:"
   rtl = false
   # mainSections = ["section1", "section2"]
-  description = "IK-20211125のサイト。"
+  description = "IKのサイト。"
 
 [params.author]
   name = "IK"
