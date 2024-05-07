@@ -1,4 +1,4 @@
 ---
-title: "IK-20211125のウェブサイト"
+title: "IKのホームページ"
 description: "Hugoのテーマの1つであるCongoを使っています。"
 ---
