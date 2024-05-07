@@ -2,7 +2,7 @@
 # Refer to the theme docs for more details about each of these parameters.
 # https://jpanther.github.io/congo/docs/getting-started/
 
-baseURL = "https://ik-20211125.github.io/"
+# baseURL = "https://ik-20211125.github.io/"
 
 theme = "congo"
 defaultContentLanguage = "ja"
