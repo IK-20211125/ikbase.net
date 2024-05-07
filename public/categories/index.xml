@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on IK-20211125</title>
-    <link>http://localhost:1313/categories/</link>
+    <link>/categories/</link>
     <description>Recent content in Categories on IK-20211125</description>
     <generator>Hugo 0.125.1</generator>
     <language>ja</language>
     <copyright>&amp;copy; 2024 IK</copyright>
     <lastBuildDate>Sun, 05 May 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Blog</title>
-      <link>http://localhost:1313/categories/blog/</link>
+      <link>/categories/blog/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/blog/</guid>
+      <guid>/categories/blog/</guid>
       <description></description>
     </item>
     <item>
       <title>About</title>
-      <link>http://localhost:1313/categories/about/</link>
+      <link>/categories/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/about/</guid>
+      <guid>/categories/about/</guid>
       <description></description>
     </item>
   </channel>

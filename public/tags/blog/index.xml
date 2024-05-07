@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog on IK-20211125</title>
-    <link>http://localhost:1313/tags/blog/</link>
+    <link>/tags/blog/</link>
     <description>Recent content in Blog on IK-20211125</description>
     <generator>Hugo 0.125.1</generator>
     <language>ja</language>
     <copyright>&amp;copy; 2024 IK</copyright>
     <lastBuildDate>Sun, 03 Mar 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GitHubPagesとHugoCongoでブログを作成する手順</title>
-      <link>http://localhost:1313/blog/2024/03/03/hugo-congo/</link>
+      <link>/blog/2024/03/03/hugo-congo/</link>
       <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/2024/03/03/hugo-congo/</guid>
+      <guid>/blog/2024/03/03/hugo-congo/</guid>
       <description>Hugoのテーマの一つCongoとGitHub Pagesでブログを作りました。</description>
     </item>
   </channel>
