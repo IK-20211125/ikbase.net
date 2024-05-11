@@ -22,6 +22,14 @@ categories: [About]
 
 Blogは基本的に備忘録です。
 
+## SNS、連絡先
+
+| | |
+| --- | --- |
+| Email | ik@ikbase.net |
+| GitHub | [IK-20211125](https://github.com/IK-20211125) |
+| X | [@IK20240503](https://twitter.com/IK20240503) |
+
 <!-- ## 旧 GitHub Pages
 
 [文字数チェッカー](https://IK-20211125.github.io/checker.html) -->
