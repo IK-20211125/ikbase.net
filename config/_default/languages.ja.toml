@@ -3,7 +3,7 @@ languageName = "Japanese"
 # languageDirection = "ltr"
 weight = 1
 
-title = "IK"
+title = "IK base"
 copyright = "&copy; 2024 IK"
 
 [params]

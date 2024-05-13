@@ -19,8 +19,8 @@ fingerprintAlgorithm = "sha256"
 
 [header]
   layout = "basic" # valid options: basic, hamburger, hybrid, custom
-  # logo = "img/logo.jpg"
-  # logoDark = "img/dark-logo.jpg"
+  logo = "img/logo.png"
+  logoDark = "img/dark-logo.png"
   showTitle = true
 
 [footer]
@@ -51,7 +51,7 @@ fingerprintAlgorithm = "sha256"
   showTaxonomies = false
   showWordCount = false
   showComments = false
-  # sharingLinks = ["facebook", "twitter", "mastodon", "pinterest", "reddit", "linkedin", "email", "telegram", "line", "weibo"]
+  # sharingLinks = ["x-twitter"]
 
 [list]
   showBreadcrumbs = false

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>About on IK</title>
+    <title>About on IK base</title>
     <link>http://localhost:1313/categories/about/</link>
-    <description>Recent content in About on IK</description>
+    <description>Recent content in About on IK base</description>
     <generator>Hugo 0.125.1</generator>
     <language>ja</language>
     <copyright>&amp;copy; 2024 IK</copyright>
