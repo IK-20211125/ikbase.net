@@ -1,12 +1,16 @@
 ---
 title: セキュリティ系おすすめ書籍
-description: セキュリティ系おすすめ書籍
-date: 2024-04-28
+description: IKがおすすめするセキュリティ系の書籍です。随時更新します。
+date: 2024-05-13
 draft: false
 tags:
   - about
 categories:
 ---
+
+IKがおすすめするセキュリティ系の書籍です。
+
+## 全般
 
 
 - [マルウエアの教科書 増補改訂版](https://bookplus.nikkei.com/atcl/catalog/23/08/02/00939/)
@@ -16,7 +20,7 @@ categories:
 
 ---
 
-## SC対策おすすめ書籍
+## SC対策
 
 
 - [2024 情報処理安全確保支援士「専門知識+午後問題」の重点対策](https://www.itec.co.jp/store/products/detail.php?product_id=3855)

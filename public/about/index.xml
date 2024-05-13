@@ -7,14 +7,14 @@
     <generator>Hugo 0.125.1</generator>
     <language>ja</language>
     <copyright>&amp;copy; 2024 IK</copyright>
-    <lastBuildDate>Sun, 28 Apr 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 13 May 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/about/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>セキュリティ系おすすめ書籍</title>
       <link>http://localhost:1313/about/books/</link>
-      <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 13 May 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/about/books/</guid>
-      <description>マルウエアの教科書 増補改訂版</description>
+      <description>IKがおすすめするセキュリティ系の書籍です。</description>
     </item>
   </channel>
 </rss>
