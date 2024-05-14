@@ -4,7 +4,6 @@ description: "Hugoのテーマの一つCongoとGitHub Pagesでブログを作り
 date: 2024-03-03
 draft: false
 tags:
-  - blog
 categories:
   - blog
 ---

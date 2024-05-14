@@ -4,7 +4,6 @@ description: IKがおすすめするセキュリティ系の書籍です。随�
 date: 2024-05-13
 draft: false
 tags:
-  - about
 categories:
 ---
 

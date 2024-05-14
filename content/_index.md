@@ -1,4 +1,4 @@
 ---
 title: "IKのホームページ"
-description: "Hugoのテーマの1つであるCongoを使っています。"
+description: "GitHubPagesとHugoのテーマの1つであるCongoを使っています。"
 ---

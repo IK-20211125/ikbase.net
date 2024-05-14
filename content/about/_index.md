@@ -6,11 +6,13 @@ draft: false
 showDate: false
 showPagination: false
 showTableOfContents: false
-tags: [About]
-categories: [About]
+tags:
+categories:
 ---
 
 <br>
+
+---
 
 ## 自己紹介
 
@@ -22,6 +24,10 @@ categories: [About]
 
 Blogは基本的に備忘録です。
 
+未登録ですが、情報処理安全確保支援士を保有しています。
+
+---
+
 ## SNS、連絡先
 
 | | |
@@ -29,6 +35,11 @@ Blogは基本的に備忘録です。
 | Email | ik@ikbase.net |
 | GitHub | [IK-20211125](https://github.com/IK-20211125) |
 | X | [@IK20240503](https://twitter.com/IK20240503) |
+
+---
+
+ソースコードは[こちら](https://github.com/IK-20211125/ikbase.net)から
+
 
 <!-- ## 旧 GitHub Pages
 
