@@ -17,8 +17,8 @@ copyright = "&copy; 2024 IK"
 [params.author]
   name = "IK"
   image = "img/author.png"
-  headline = "セキュリティ専門家"
-  bio = "セキュリティ専門家"
+  headline = "セキュリティ専門家を目指す人"
+  bio = "セキュリティ専門家を目指す人"
   links = [
      { github = "https://github.com/IK-20211125" },
      { x-twitter = "https://twitter.com/IK20240503" },
