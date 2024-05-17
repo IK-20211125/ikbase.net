@@ -145,7 +145,7 @@ Unix系システムにおいて、ファイルに書かれたプログラム文�
 
 ## Q17 「Math II」
 
-![[ksnctf-q17.png]]
+![ksnctf-q17.png](ksnctf-q17.png)
 
 まあ、とりあえずM3に任せてゴリ押ししてみるよね。
 
@@ -212,7 +212,7 @@ paizaさんいつもありがとうございます。
 
 ## Q29 「Double Blind」
 
-![[ksnctf-q29.png]]
+![ksnctf-q29.png](ksnctf-q29.png)
 
 お、Wordファイルか。
 
