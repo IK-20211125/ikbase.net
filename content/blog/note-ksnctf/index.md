@@ -143,6 +143,36 @@ Unix系システムにおいて、ファイルに書かれたプログラム文�
 
 ---
 
+## Q14 「John」
+
+![ksnctf-q14.png](ksnctf-q14.png)
+
+John ということで [John the ripper](https://www.openwall.com/john/) を使うやつだろうという予測。
+
+user99に 「SHA512 is strong」 と 「Dictionary is here URL」という文字がありました。
+
+なるほど、John the ripperを使ってUNIX形式のshadowファイルに対して辞書攻撃をするということか
+
+早速、Jon the ripper（john-jumboの方）の使い方を調べて使ってみました
+
+- shadow.txt → /etc/shadow 形式のファイル
+- dictionary.txt → 辞書攻撃に使用するパスワードリスト
+
+```
+john shadow.txt --wordlist=dictionary.txt
+john --show shadow.txt
+```
+
+あとは縦読みです。
+
+いくら強力なSHA512といえども、辞書攻撃で破られてしまうような簡単なパスワードでは意味がないということがよくわかりました。
+
+余談ですが、MacにJohn the ripperが入っていなかったため、brewでインストールしようとしたら「john」「john-jumbo」と２つあり悩みました。
+
+「john」が公式のものであり、「john-jumbo」はコミュニティが開発している拡張版らしいですね。
+
+あと、こういうツールを使うときは使い方に細心の注意を払わないと行けないですね。
+
 ## Q17 「Math II」
 
 ![ksnctf-q17.png](ksnctf-q17.png)
