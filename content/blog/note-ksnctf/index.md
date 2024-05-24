@@ -143,6 +143,59 @@ Unix系システムにおいて、ファイルに書かれたプログラム文�
 
 ---
 
+## Q13 「Proverb」
+
+![ksnctf-q13.png](ksnctf-q13.png)
+
+SSHで対象のサーバにログインしてアレコレするタイプですかね。
+
+とりあえず、ログインしました。
+
+``` bash
+This server will destruct in 10 minutes.
+Keep your progress by yourself.
+[q13@3ed4c56443e4 ~]$ ls -lta
+total 52
+dr-xr-xr-x 1 root root  4096 Feb 25  2021 .
+-rw-r--r-- 1 q13  q13    543 Feb 25  2021 .bashrc
+-r-------- 1 q13a q13a    22 Feb 25  2021 flag.txt
+---s--x--x 1 q13a q13a 24144 Feb 25  2021 proverb
+-r--r--r-- 1 q13a q13a   755 Feb 25  2021 proverb.txt
+drwxr-xr-x 1 root root  4096 Feb 25  2021 ..
+-rw-r--r-- 1 q13  q13     18 Jul 21  2020 .bash_logout
+-rw-r--r-- 1 q13  q13    141 Jul 21  2020 .bash_profile
+[q13@3ed4c56443e4 ~]$ pwd
+/home/q13
+```
+
+このような感じでした。
+
+「flag.txt」に答えがありそうですが、読む権限が所有者しかありませんね。
+
+ちなみにですが、`rwx rw- r--` は所有者、グループ、その他のユーザの順で権限が表示されています。
+
+`ls -lta` の `-lta` は `l` はファイルの詳細情報を表示、`t` はファイルを更新順でソート、`a` は隠しファイルも表示という意味です。
+
+`proverb.txt`を開くとことわざが一覧で入っており、
+
+実行ファイル`proverb`を実行すると`proverb.txt`の中のランダムな一列を出力するというものでした。
+
+ここで止まってしましました。
+
+結論として、自分（q13）が権限を持っているフォルダ（tmp）に行き、
+
+実行ファイル`proverb`の参照先のファイル`proverb.txt`をシンボリックリンクで`flag.txt`に置き換えるというものでした。
+
+下記が参考にしたサイトです。ありがとうございました。
+
+[ksnctf #13 Proverb](https://qiita.com/NakashimaKenta/items/ce0bcea7ca16053bbb6e)
+
+余談ですが、10分でサーバ初期化されてしまうのが大変でした。
+
+色々試行錯誤しているとすぐに10分経ってしまいます。
+
+---
+
 ## Q14 「John」
 
 ![ksnctf-q14.png](ksnctf-q14.png)
@@ -172,6 +225,8 @@ john --show shadow.txt
 「john」が公式のものであり、「john-jumbo」はコミュニティが開発している拡張版らしいですね。
 
 あと、こういうツールを使うときは使い方に細心の注意を払わないと行けないですね。
+
+---
 
 ## Q17 「Math II」
 
@@ -224,6 +279,38 @@ ChatGPTに代わりに探して貰いました。
 
 ---
 
+## Q22 「Square Cipher」
+
+![ksnctf-q22.png](ksnctf-q22.png)
+
+Square ということで、縦31文字、横31文字。
+
+文字列の並びを見たらBase64を疑いますが、文字列内に数字や=がないため、違いそう。
+
+最初の行と最後の行、左端の列と右端の列が小文字のみで構成されていることを見つけましたが、そこで止まってしまった。
+
+最終的には、有志のサイトを参考にしました。
+
+Squareというのがポイントだったらしく、
+
+正方形 → QRコード という発想が必要だった....
+
+文字列を正規表現でCSV形式に変更し、Excelに読み込む。
+
+下記の関数で大文字かどうかを検証し、TRUE、FALSEに変更。
+
+```
+=EXACT(Sheet1!A1,UPPER(Sheet1!A1))
+```
+
+TRUE（大文字）の部分を黒で塗りつぶすことでQRコードとして読み取れる形になりました。
+
+下記が参考にしたサイトです。ありがとうございました。
+
+[ksnctf 22 Square Cipher 60pt](https://qiita.com/samohan/items/7cf6990a99c0515a7e67)
+
+---
+
 ## Q25 「Reserved」
 
 ![ksnctf-q25.png](ksnctf-q25.png)
@@ -237,6 +324,32 @@ length , print , else ... と読める文字が多いので暗号化はされて
 余談ですが、[paiza.io](https://paiza.io/ja/projects/new)かなり便利ですよね。
 
 paizaさんいつもありがとうございます。
+
+---
+
+## Q28 「Lo-Tech Cipher」
+
+![ksnctf-q28.png](ksnctf-q28.png)
+
+zipファイルが一つ。
+
+解凍してみると２つの画像ファイルがありました。
+
+まあ、とりあえず重ねてみるかということで重ねてみたら下部に何らかの文字列が、
+
+![ksnctf-q28-1.png](ksnctf-q28-1.png)
+
+読みにくすぎると誰もが思ったでしょう。または、Gimpでやったのが悪かったのか...
+
+とりあえず、「hidden in the ZIP」は読み取れるので、zipファイルのバイナリを見たところ
+
+ヘッダが「PK」（zipファイルを示すヘッダ）ではなく、「PNG」になっていました。
+
+拡張子をPNGに変え、開いたところ、また似たような画像でしたので、また重ねてみたらFlagを得ることができました。
+
+ちなみに3枚目の画像を重ねるとかなり字が濃くなり、見やすくなりました。
+
+[Visual cryptography](https://en.wikipedia.org/wiki/Visual_cryptography)という技術らしいですね。
 
 ---
 
@@ -290,7 +403,7 @@ Flagを得ることができました。
 
 ## 終わりに
 
-ksnectfを制覇できるまでどんどん追記していきます。
+ksnctfを制覇できるまでどんどん追記していきます。
 
 最後までお読みいただきありがとうございました。
 
