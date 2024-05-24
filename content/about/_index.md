@@ -26,6 +26,8 @@ Blogは基本的に備忘録です。
 
 未登録ですが、情報処理安全確保支援士を保有しています。
 
+ソースコードは[こちら](https://github.com/IK-20211125/ikbase.net)から
+
 ---
 
 ## SNS、連絡先
@@ -38,11 +40,12 @@ Blogは基本的に備忘録です。
 
 ---
 
-ソースコードは[こちら](https://github.com/IK-20211125/ikbase.net)から
+## 旧 GitHub Pages
 
+サブドメインを使うことで復活しました。
 
-<!-- ## 旧 GitHub Pages
+[文字数チェッカー](https://chk.ikbase.net)
 
-[文字数チェッカー](https://IK-20211125.github.io/checker.html) -->
+---
 
 ## 関連記事
