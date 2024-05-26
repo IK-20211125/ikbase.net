@@ -189,15 +189,14 @@ $$e \cdot d \equiv 1\bmod \mathrm{lcm}(p-1,q-1)$$
 
 ``` Python
 # 拡張ユークリッドの互除法
-def ext_euclid(a, b):
-    xs = a, 1, 0
-    ys = b, 0, 1
-    while ys[0] != 0:
-        q, z = divmod(xs[0], ys[0])
-        xs, ys = ys, (z, xs[1] - q * ys[1], xs[2] - q * ys[2])
-    return xs
+def extended_gcd(a, b):
+    if a == 0:
+        return b, 0, 1
+    else:
+        gcd, x, y = extended_gcd(b % a, a)
+        return (gcd, y - (b // a) * x, x)
 
-print(ext_euclid(7,60)[1])
+print(extended_gcd(7,60)[1])
 ```
 
 結果、-17と出ました。負の数なので、正の範囲に直します。
@@ -296,15 +295,14 @@ print(ext_euclid(7,60)[1])
 
 ``` Python
 # 拡張ユークリッドの互除法
-def ext_euclid(a, b):
-    xs = a, 1, 0
-    ys = b, 0, 1
-    while ys[0] != 0:
-        q, z = divmod(xs[0], ys[0])
-        xs, ys = ys, (z, xs[1] - q * ys[1], xs[2] - q * ys[2])
-    return xs
+def extended_gcd(a, b):
+    if a == 0:
+        return b, 0, 1
+    else:
+        gcd, x, y = extended_gcd(b % a, a)
+        return (gcd, y - (b // a) * x, x)
 
-print(ext_euclid(43,60)[1])
+print(extended_gcd(43,60)[1])
 ```
 
 無事、秘密鍵 \\(7\\) を算出することが来ました。
