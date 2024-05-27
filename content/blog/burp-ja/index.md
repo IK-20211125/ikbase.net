@@ -38,7 +38,7 @@ MacOS上でBurpSuiteを日本語化する手順をたどります。
 
 まず、Mac版BurpSuiteをインストールします。
 
-今回はHomebrewを使用します。<br>（Homebrewをインストールされていない方は下記コマンドでインストールしてください。）
+今回はHomebrewを使用します。<br>（Homebrewをインストールされていない方は下記コマンドでインストールしてください）
 
 - Homebrew インストール
 ```zsh
