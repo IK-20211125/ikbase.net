@@ -1,5 +1,5 @@
 ---
-title: MacOS BurpSuite日本語化手順
+title: MacOS BurpSuite 日本語化手順
 description: MacOS上でBurpSuiteを日本語化する手順をたどります。
 date: 2024-05-27
 draft: false
