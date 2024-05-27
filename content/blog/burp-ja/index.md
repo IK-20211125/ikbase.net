@@ -90,7 +90,7 @@ Thanks to [Yutaka Kokubu | GitHub](https://github.com/ankokuty) ,  [Yutaka Kokub
 
 ## Java環境構築
 
-Javaの環境がすでにある人はここの章は飛ばしてください。
+Javaの環境がすでにある方はここの章は飛ばしてください。
 
 私の場合、MacOSに初期から入っているJavaでは動かなかったため、新しくHomebrewでインストールしました。
 
@@ -101,7 +101,7 @@ brew install openjdk
 
 インストールしただけでは環境変数に登録されなかったので、`.zshrc` に環境変数を登録するスクリプトを書きました。<br>（`.zshrc` は初期状態では作成されていないため、自身で作成してください）
 
-`.zshrc` に下記文を入力して保存してください。<br>（※ version や path などは自身の環境のものに変更してください）
+`.zshrc` に下記文を入力して保存してください。<br>（※ version や path は自身の環境のものに変更してください）
 
 - `.zshrc` にopenjdkの環境変数を登録
 ```zsh
