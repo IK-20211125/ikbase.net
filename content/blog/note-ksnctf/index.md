@@ -176,6 +176,8 @@ Content
 <?php echo shell_exec('cat index.php'); ?>
 ```
 
+[shell_exec](https://www.php.net/manual/ja/function.shell-exec.php) とは「シェルによりコマンドを実行し、文字列として出力全体を返す」PHPの関数ですね。
+
 「Flag is in this directory.」ということのようなので ls を使ってみましょう。
 
 Content
@@ -461,20 +463,20 @@ paizaさんいつもありがとうございます。
 
 まず、気になったのは「index.pl」です。
 
-Perl で書かれているということで、Perl の脆弱性とか変わってくるのかな。
+Perl で書かれているということで、Perl の脆弱性とか関わってくるのかな。
 
-「index.pl」を開いたら、テキストファイルのリンクが3つと参照元のリンクが一つ。
+「index.pl」を開いたら、テキストファイルのリンクが3つと参照元のリンクが1つ。
 
 すべてソースまで確認したが怪しいところはない。
 
-では、「q26」フォルダ見れるか試してみようということで、
+では、「q26」フォルダが見れるか試してみようということで、
 ```path
 https://ctfq.u1tramarine.blue/q26/
 ```
 
 見ることができました。
 
-![[ksnctf-q26-1.png]]
+![ksnctf-q26-1.png](ksnctf-q26-1.png)
 
 「flag.txt」だ。勝ったな。と思い開いてみますが、
 
