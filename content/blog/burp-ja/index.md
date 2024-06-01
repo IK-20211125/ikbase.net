@@ -156,7 +156,7 @@ java -javaagent:belle.jar -Xmx1024m -jar burpsuite_community.jar
 
 MacOS上でBurpSuiteを日本語化する手順をたどりました。
 
-以前、Windows環境では行ったことが合ったのですが、MacOSの方だと少し苦戦したため備忘録として記述しました。
+以前、Windows環境では行ったことがあったのですが、MacOSの方だと少し苦戦したため備忘録として記述しました。
 
 日本語化モジュールを開発、提供されている方には感謝しかないですね。
 
