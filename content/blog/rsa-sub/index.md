@@ -81,7 +81,7 @@ $$x^{k \cdot \mathrm{lcm}(p-1,q-1) + 1} \equiv ｘ \bmod N$$
 - ④
 $$ x^{e \cdot d}\equiv x \bmod N$$
 
-③と④の２つの式を加味すると、\\(\mathrm{lcm}(p-1,q-1)\\) と \\(e \cdot d\\) は下記の式に変形できます。
+③と④の２つの式を加味すると、\\(k \cdot \mathrm{lcm}(p-1,q-1) + 1\\) と \\(e \cdot d\\) は下記の式に変形できます。
 
 - ⑤
 $$e \cdot d\\ = k \cdot \mathrm{lcm}(p-1,q-1) + 1$$
@@ -93,7 +93,7 @@ $$e \cdot d \equiv k \cdot \mathrm{lcm}(p-1,q-1) + 1 \bmod \mathrm{lcm}(p-1,q-1)
 
 右辺の \\(k \cdot \mathrm{lcm}(p-1,q-1)\\)  は \\(\mathrm{lcm}(p-1,q-1)\\) で剰余すると \\(0\\) になります。
 
-\\(0\\) に \\(+1\\) しているので右辺は \\(1\\) と合同となります。 \\(k \cdot \mathrm{lcm}(p-1,q-1) + 1 \equiv 1 \bmod \mathrm{lcm}(p-1,q-1)\\)
+\\(0\\) に \\(+1\\) しているので右辺は \\(1\\) と合同となります。<br> \\(k \cdot \mathrm{lcm}(p-1,q-1) + 1 \equiv 1 \bmod \mathrm{lcm}(p-1,q-1)\\)
 
 よって、下記の式に変形することができます。
 
