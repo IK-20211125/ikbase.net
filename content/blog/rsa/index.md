@@ -112,6 +112,10 @@ $$e \cdot d \equiv 1\bmod \mathrm{lcm}(p-1,q-1)$$
 
 なぜ、上記の式を満たす時、\\(x^{e \cdot d}\equiv x \bmod N\\) が成り立つのかというのは今回は省略します。
 
+省略した部分は下記の記事で説明しています。
+
+[RSA暗号の仕組み 補足](https://ikbase.net/blog/2024/06/02/rsa-sub/)
+
 --- 
 
 ### 鍵の生成方法
