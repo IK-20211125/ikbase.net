@@ -184,6 +184,63 @@ Flagを得ることができました。
 
 ---
 
+## Q7 「Programming」
+
+![ksnctf-q7.png](ksnctf-q7.png)
+
+C++ファイルが一つ。
+
+開いてみるとスペースやタブを使って難読化されたコードが有りました。
+
+とりあえず、スペースとタブをすべて取り除いてフォーマットしてみました。
+
+```cpp
+#include <stdio.h>    
+#include <string.h>	
+	
+int main(){
+    // F
+	const char *s ="     	    ""0123456789""     ""		   "
+	"			         							  				 			 ""ABCDEFGHIJ";
+	printf("%c",strlen(s));
+	// ROG
+	int i = 020000000+001000000+000600000+000040000+000007000+000000500+000000020+000000002-000007006;
+	printf("%s",&i);
+   	// _This_i
+	long long l = 2LL*11LL*229LL*614741LL*9576751LL+5LL;
+    printf("%s",&l);
+    // s_w
+	float f	= 1.0962664770776731080774868826855754386638240000e-38f;
+    printf("%s",&f);
+    // rong_:(
+	double d = 6.7386412564254706622868098890859398199406890000e-308;
+	printf("%s",&d);
+}
+```
+
+実行してみると、「FROG_This_is_wrong_:(」と出力されました。
+
+そこから、ROGをLAGにして、その数値の変化を他のものにも当てはめてみたりと色々試行錯誤しましたが、残念届かず...
+
+ここで止まってしまいました。
+
+結果的には、Whitespace という空白文字だけで構成されるプログラミング言語らしいですね。
+
+序盤にすべて取り除いている... :(
+
+下記のサイトを利用して Whitespace を実行することができました。
+
+[Whitelips the Esoteric Language IDE](https://vii5ard.github.io/whitespace/)
+
+PINなるものを要求されたので右の欄（アセンブリかな？）のそれっぽい文字を入れることでFlagを得ることができました。
+
+下記が参考にしたサイトです。ありがとうございました。
+
+[ksnctf 7 Programming 110pt](https://qiita.com/samohan/items/766deca6f39c37122c0e)
+
+
+---
+
 ## Q8 「Basic is secure?」
 
 ![ksnctf-q8.png](ksnctf-q8.png)
@@ -193,6 +250,121 @@ Flagを得ることができました。
 ネットワークのパケットをキャプチャしたログが入っているファイルですね。
 
 早速、Wiresharkでみたところ、HTTPでBASIC認証を行っておりパスワード（Flag）を平文で見ることができました。
+
+---
+
+## Q9 「Digest is secure!」
+
+![ksnctf-q9.png](ksnctf-q9.png)
+
+お、pcapファイルだ。
+
+前はBasic認証でパスワードを平文で得ることができましたが、今回は問題名からDigest認証っぽいですね。
+
+Digest認証とは、「ユーザ名とパスワードを暗号学的ハッシュ関数でハッシュ（ダイジェスト）化して送る。Basic認証では防げなかった盗聴や改竄を防ぐために考案された。」（[Wikipedia](https://ja.wikipedia.org/wiki/Digest%E8%AA%8D%E8%A8%BC)）ということで、確かにsecureですね。
+
+おそらく方針としては、パケットログからダイジェスト認証でクライアントが送信するハッシュ値を探して、それのハッシュ値を解読する流れですかね。
+
+早速、pcapファイルを中身を見てみました。
+
+3ウェイ・ハンドシェイク → HTTP GET → 401（Unauthorized） → サーバがハッシュ化に必要な情報を提供 → クライアントがハッシュ値（response）を送信 → ダイジェスト認証成功！
+
+という流れでした。
+
+アクセス先は`https://ctfq.u1tramarine.blue/q9/`ここですね。
+
+- 実際のログ
+```
+Authorization: Digest username="q9", 
+realm="secret", 
+nonce="HHj57RG8BQA=4714c627c5195786fc112b67eca599d675d5454b", 
+uri="/q9/", 
+algorithm=MD5, 
+response="26c8019eb6f7f41b9c14b4cbda48ab2e", 
+qop=auth, 
+nc=00000002, 
+cnonce="656335d78cef6e86"\
+```
+
+ハッシュ関数が危殆化しているMD5ということがわかりましたね。
+
+あとは、ここのハッシュ値、`response="26c8019eb6f7f41b9c14b4cbda48ab2e"`を解析できればFlagを得ることができそうです。
+
+Digest認証のresponseの作成方法はこちらです。（[Wikipedia](https://ja.wikipedia.org/wiki/Digest%E8%AA%8D%E8%A8%BC)）
+```
+A1 = ユーザ名 ":" realm ":" パスワード
+A2 = HTTPのメソッド ":" コンテンツのURI
+response = MD5( MD5(A1) ":" nonce ":" nc ":" cnonce ":" qop ":" MD5(A2) )
+```
+
+まず、危殆化されたハッシュ関数MD5ということでhashtoolkitというサイトを使って複合しようと思ったのですが...
+
+![ksnctf-q9-1.png](ksnctf-q9-1.png)
+
+hashtoolkit死んでる...
+
+え、いつから... どうしよ...
+
+ここで数多のWriteupを見ましたが、大体の方がhashtoolkitを使われて解かれているのでどうしようかと思っていたら...
+
+見つけました。救世主を。
+
+下記のWriteupの方が道筋を示してくれました。ありがとうございます。
+
+[ksnctf: #9 digest is secure!](https://vintersnow.github.io/ctf/ksnctf_digest_is_secure/)
+
+なるほど、htdigestをユーザが覗いているから重要なA1の部分のハッシュ値を得ることができるのか！おそらくこっちが正攻法ですね。
+
+で、htdigestってなんだろうと思い調べてみました。
+
+ダイジェスト認証に必要なユーザ名とパスワードを管理するツールらしいですね。（それを見ることで重要なハッシュ値を得れてしまうというのはどういうこと？）
+
+ということで、重要な部分を得ることが得できました。
+
+![ksnctf-q9-2.png](ksnctf-q9-2.png)
+
+MD5(A1) = c627e19450db746b739f41b64097d449 
+
+と、わかりました。
+
+A2も算出することができます。（ログファイル内に`<p>The flag is <a href="flag.html">here</a>.</p>`とありました）
+
+A2 = GET:/q9/flag.html
+
+MD5(A2) = 9e2b6bca5d4d92f6ead358623df264c8
+
+下記のツールを使用しました。ありがとうございます。
+
+[ＭＤ５ハッシュ計算ツール - phpspot](https://phpspot.net/php/pg%EF%BC%AD%EF%BC%A4%EF%BC%95%E3%83%8F%E3%83%83%E3%82%B7%E3%83%A5%E8%A8%88%E7%AE%97%E3%83%84%E3%83%BC%E3%83%AB.html)
+
+実際に当てはめます。
+
+response = MD5( MD5(A1) ":" nonce ":" nc ":" cnonce ":" qop ":" MD5(A2) ) 
+
+response = MD5(c627e19450db746b739f41b64097d449:"nonce":"nc":"cnonce":auth:9e2b6bca5d4d92f6ead358623df264c8)
+
+あとは、nonce、nc、cnonceを当てはめてハッシュ化するだけですね。
+
+BurpSuiteを使いましょう。
+
+- 私の場合、このようになりました。
+```
+Digest username="q9", 
+realm="secret", 
+nonce="vfxP3XAaBgA=d8ef7afa319e3312e29656cab349cd617c14586f", 
+uri="/q9/flag.html", 
+algorithm=MD5, 
+response="9ac2149aa735fa969a052b570dc61671", 
+qop=auth, 
+nc=00000002, 
+cnonce="2a068655518788a7"
+```
+
+responseを作成します。
+
+response = MD5(c627e19450db746b739f41b64097d449:vfxP3XAaBgA=d8ef7afa319e3312e29656cab349cd617c14586f:00000002:2a068655518788a7:auth:9e2b6bca5d4d92f6ead358623df264c8)
+
+responseを改ざんすることで、Flagを得ることができました。
 
 ---
 
@@ -647,7 +819,7 @@ Flagを得ることができました。
 
 ---
 
-## Q35 Simple Auth II
+## Q35 「Simple Auth II」
 
 ![ksnctf-q35.png](ksnctf-q35.png)
 
