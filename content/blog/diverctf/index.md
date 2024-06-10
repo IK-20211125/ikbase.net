@@ -8,7 +8,9 @@ categories:
   - blog
 ---
 
-2024年のDIVER OSINT CTFに参加したため、そこで解いた面白かった問題のWriteupを書きました。
+2024年のDIVER OSINT CTFに参加しました。そこで解いて面白かった問題のWriteupを書きました。
+
+---
 
 ## はじめに
 
@@ -16,13 +18,13 @@ categories:
 
 自分が学んだことを文書として記録しておこうと考え、記述します。
 
-今回は2024年6月8日にDIVER OSINT CTFに参加したため、そこで解いた面白かった問題のWriteupを書いてみようと思います。
+今回は2024年6月8日にDIVER OSINT CTFに参加したため、そこで解いて面白かった問題のWriteupを書いてみようと思います。
 
 ちなみにWriteupを書くのは初めてです。
 
 OSINTも初めてでした。
 
-[DIVER OSINT CTF / X](https://x.com/DIVER_OSINT_CTF)
+公式 X → [DIVER OSINT CTF / X](https://x.com/DIVER_OSINT_CTF)
 
 ---
 
@@ -51,7 +53,7 @@ OSINTも初めてでした。
 
 [外交官車両ナンバー 一覧表つくってみたよ。](https://warmheart0159.hatenablog.com/entry/2017/06/06/162406)
 
-ということで、49はクエートらしいですね。
+ということで、49はクウェートらしいですね。
 
 駐日クウェート大使館の電話番号がFlagでした。
 
@@ -122,7 +124,7 @@ Googleレンズにかけてみるとここは明治村近くの入鹿池っぽ�
 
 この問題解くことができなかったのですが、後日、他の方のWriteupによると[GHunt](https://github.com/mxrch/GHunt)と呼ばれるツールを使うことで解くことができるみたいですね。
 
-Introductionにしては解いた人が少なかったみたいですね。
+Introductionにしては解けた人が少なかったみたいですね。
 
 ---
 
@@ -132,7 +134,7 @@ DIVER OSINT CTFのWriteupを書きました。
 
 OSINTはやったことがなかったのですが、やってみるととても楽しかったです。
 
-DIVER OSINT CTF を開催運営してくださった皆様、ありがとうございました。
+DIVER OSINT CTF を開催、運営してくださった皆様、ありがとうございました。
 
 最後までお読みいただきありがとうございました。
 
