@@ -265,7 +265,7 @@ Digest認証とは、「ユーザ名とパスワードを暗号学的ハッシ�
 
 おそらく方針としては、パケットログからダイジェスト認証でクライアントが送信するハッシュ値を探して、それのハッシュ値を解読する流れですかね。
 
-早速、pcapファイルを中身を見てみました。
+早速、pcapファイルの中身を見てみました。
 
 3ウェイ・ハンドシェイク → HTTP GET → 401（Unauthorized） → サーバがハッシュ化に必要な情報を提供 → クライアントがハッシュ値（response）を送信 → ダイジェスト認証成功！
 
@@ -625,6 +625,80 @@ icat drive.img 36-128-4
 下記が参考にしたサイトです。ありがとうございました。
 
 [ksnctf #18 USB flash drive](https://qiita.com/NakashimaKenta/items/238395dadf08eade3c60)
+
+---
+
+## Q19 「ZIP de kure」
+
+![ksnctf-q19.png](ksnctf-q19.png)
+
+「ZIPでくれ」とよく聞きますよね。
+
+「誰もが使っているものが本当に安全なのか？」と「このAAに意味はない」と書いてあります。
+
+早速、zipファイルを開こうとしたらパスワードがかかっていました。
+
+とりあえず、john the ripperを使ってパスワードクラックを試してみましたが、終わりそうにありません。
+
+ちなみに使ったコマンドはこれ。（ちなみにzip2johnはパスが通ってなかったのでファイルを直接参照しました）
+```zsh
+zip2john flag.zip > hash.txt
+john hash.txt
+```
+
+これで終わらなかったため、色々試行錯誤していたところ、zipファイルのバイナリの最後尾にこんな文字列を見つけました。
+
+Hint
+- It is known that the encryption system of ZIP is weak against known-plaintext attacks.
+- We employ ZIP format not for compression but for encryption.
+
+なるほど、known-plaintext attack にzipは弱いと書いてありますね。
+
+known-palaintext attack は日本では既知平文攻撃と呼ばれています。
+
+では、既知平文攻撃に使えそうなプレーンテキストはあるのかとバイナリ内を探してみたら、
+
+「Standard-lock-key.jpg」という文字を見つけました。
+
+検索してみると、鍵の有名な画像？なのですかね。ヒットしました。
+
+[File:Standard-lock-key.jpg](https://commons.wikimedia.org/wiki/File:Standard-lock-key.jpg)
+
+ということで、一番上の画像を保存、あとは既知平文攻撃を行うだけですね。
+
+既知平文攻撃は[pkcrack](https://github.com/keyunluo/pkcrack)というツールが有名らしいです。
+
+セットアップを行い、実行してみました。
+
+```zsh
+pkcrack -C flag.zip -c Standard-lock-key.jpg -p Standard-lock-key.jpg -d ans.zip
+```
+
+しかし、「No solutions found. You must have chosen the wrong plaintext.」と言われてしまいました。
+
+ここでかなり苦戦したのですが、Wikiを確認しているとなんとStandard-lock-key.jpgが2種類あることに気付きました。
+
+![ksnctf-q19-1.png](ksnctf-q19-1.png)
+
+待て、この問題が作成されたのはいつだ....?
+
+「Released at: 2012/06/03」
+
+そういうことか...
+
+ということで、下の鍵を保存してもう一度コマンドを実行しました。
+
+```zsh
+pkcrack -C flag.zip -c Standard-lock-key.jpg -p oldkey.jpg -d ans.zip 
+```
+
+Flagを得ることができました。
+
+余談ですが、pkcrackをMacで実行するのにかなり手間取りました。
+
+cmakeをインストールしたり、ファイルを直接指定して実行したりと、そこが一番苦労しましたね。
+
+あと、久しぶりにwriteupなしで解くことができました。
 
 ---
 

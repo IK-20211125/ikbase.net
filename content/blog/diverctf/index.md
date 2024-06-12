@@ -1,6 +1,6 @@
 ---
 title: DIVER OSINT CTF Writeup
-description: Diver OSINT CTF で個人的に面白かった問題のWriteupを書きました。
+description: DIVER OSINT CTF で個人的に面白かった問題のWriteupを書きました。
 date: 2024-06-10
 draft: false
 tags: 
