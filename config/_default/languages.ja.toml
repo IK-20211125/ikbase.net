@@ -21,7 +21,7 @@ copyright = "&copy; 2024 IK"
   bio = "セキュリティ専門家を目指す人"
   links = [
      { github = "https://github.com/IK-20211125" },
-     { x-twitter = "https://twitter.com/IK20240503" },
+     { x-twitter = "https://twitter.com/ikbasenet" },
      { email = "https://ikbase.net/about" },
      { misskey = "https://misskey.io/@ikit" }
   ]

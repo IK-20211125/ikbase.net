@@ -36,7 +36,7 @@ Blogは基本的に備忘録です。
 | --- | --- |
 | Email | ik@ikbase.net |
 | GitHub | [IK-20211125](https://github.com/IK-20211125) |
-| X | [@IK20240503](https://twitter.com/IK20240503) |
+| X | [@IK20240503](https://twitter.com/ikbasenet) |
 | Misskey | [@ikit](https://misskey.io/@ikit) |
 
 ---
