@@ -90,6 +90,102 @@ unya ?? → 「うにゃ」
 
 ---
 
+## Q4 「Villager A」
+
+![ksnctf-q4.png](ksnctf-q4.png)
+
+SSH系ですね。300ptの問題ということで相当難しいでしょう。
+
+今回はかなりwriteupにお世話になりました。
+
+長い工程となるため、断片的に学んだことを記述していきます。
+
+「q4」という実行ファイルがあり、`cat`コマンドで中身を覗いてみましたが難読化のようなものされていました。
+
+「q4」に対して、`strings`コマンドを使用してみました。
+
+[`strings`コマンドとは](https://www.ibm.com/docs/ja/aix/7.1?topic=s-strings-command)、ファイル内の印刷可能文字列を検出するコマンドです。
+
+特に有用な文字列を得ることはできませんでした。
+
+次に、逆アセンブルを行いました。
+
+```shell
+objdump -d -M intel ./q4
+```
+
+[`objdump`コマンドとは](https://www.ibm.com/docs/ja/sdk-java-technology/8?topic=techniques-using-system-dump-tools)、共有オブジェクトおよび共有ライブラリーを逆アセンブルするために使用するコマンドです。
+
+`-d`は逆アセンブルを意味しています。
+
+`-M intel`はアセンブリ言語の表記をインテル形式に指定しています。デフォルトでは、 AT&T 形式らしいです。
+
+アセンブリ言語の量が多いので`fopen`という単語で正規表現をかけてみます。
+
+```shell
+objdump -d -M intel ./q4 | grep fopen
+```
+
+[`fopen`とは](https://www.ibm.com/docs/ja/i/7.3?topic=functions-fopen-open-files)、単純に指定されたファイルを開く関数です。
+
+どうやら<u>書式文字列攻撃</u>というのを使うらしいです。
+
+前提知識として、
+
+```shell
+echo -e "ik" | ./q4
+```
+
+`echo`と実行ファイルをパイプでつなげることで実行ファイルに値を入力することができます。
+
+```shell
+[q4@eceec62b961b ~]$ echo -e "abcd %x %x %x %x %x %x %x" | ./q4
+What's your name?
+Hi, abcd 400 f7cdf580 ffc7ed38 6 0 64636261 20782520
+```
+
+書式文字列攻撃を試してみました。
+
+`%x`はスタックから変数を受け取るとるという意味です。
+
+`printf("%s",str)`ではなく、`print(str)`としてしまうことで発生する脆弱性のようです。
+
+入力した情報がメモリ上の6番目にあることがわかります。abcd → 64636261
+
+リトルエンディアンなので、反転しています。
+
+今回の解法を簡単に言うと、実行ファイルの序盤に実行される関数（文字入力後）の呼び出し先のアドレスを、`fopen`が実行される関数内のアドレスに変更したいということです。
+
+本来は、`0x080499e0`を参照するのが正しい処理ですが、それを`fopen`が実行される関数内のアドレスである`0x08048691`に変更したいということです。
+
+- 実際の書式文字列攻撃のコマンド
+```shell
+echo -e "\xe0\x99\x04\x08%134514317x%6\$n" | ./q4
+```
+
+「%i(i:整数値)\$nを使うと、i番目のスタックに格納されている値が示すアドレスに、現在printfで表示されている文字数が4バイト整数値として書き込まれる。」<br>[ksnctf #4 Villager A　初めての書式文字列攻撃。](https://linuxnosusume.blogspot.com/2017/12/ksnctf-4villager-a.html)
+
+とのことなので、メモリの6番目（`%6`）に格納されているアドレス`\xe0\x99\x04\x08`に、現在、`printf`で表示されている文字数（`%j（j：整数値）x` → `%134514317x` 13451431文字分のスペース）が、4バイト整数値（アドレス）として書き込まれる。<br>※ すでに「Hi, ?」で4文字分出力されているため、`0x08048691`を10進数にした値である`134514321`から4を減算した分のスペースを出力しています。
+
+Flagを得ることができました。
+
+アセンブリ言語のメモリ構造などを理解していない私にとっては難しすぎました。
+
+writeupを使って解いて、理解しましたが、かなりふわふわとした理解です。
+
+間違っている部分もあるかもしれません。
+
+まあでも、勉強になったので良しです。
+
+下記が今回かなり参考にしたサイトです。ありがとうございました！
+
+[ksnctf 4 Villager A 300pt](https://qiita.com/samohan/items/779699e2381c38285795)<br>
+[ksnctf #4 Villager A](https://tmsk8219.hatenablog.com/entry/2016/06/15/180639)<br>
+[ksnctf #4 “Villager A”を解く](https://tomomon.jp/programming/ksnctf4/)<br>
+[ksnctf #4 Villager A　初めての書式文字列攻撃。](https://linuxnosusume.blogspot.com/2017/12/ksnctf-4villager-a.html)
+
+---
+
 ## Q5 「Onion」
 
 ![ksnctf-q5.png](ksnctf-q5.png)
@@ -512,6 +608,68 @@ john --show shadow.txt
 「john」が公式のものであり、「john-jumbo」はコミュニティが開発している拡張版らしいですね。
 
 あと、こういうツールを使うときは使い方に細心の注意を払わないと行けないですね。
+
+---
+
+## Q16 「Math I」
+
+![ksnctf-q16.png](ksnctf-q16.png)
+
+これ、RSA暗号ですね。最近やってたのでわかりました。
+
+ショアのアルゴリズムで素因数分解したと書かれています。
+
+おかしいですね、ショアのアルゴリズムを動かすことのできる量子コンピュータ（量子チューリングマシン）はこの世に無いはずなのに...
+
+とりあえず、解きましょう。
+
+ちょうど、RSA暗号のアルゴリズムを勉強したばかりです。
+
+[RSA暗号の仕組み](https://ikbase.net/blog/2024/05/26/rsa/)
+
+秘密鍵 d を求めれば平文 m を複合することができそうですね
+
+では、コードを書きましょう。
+
+```python
+import math
+
+e = 65537
+n = "長いので省略"
+c = "長いので省略"
+p = "長いので省略"
+q = "長いので省略"
+
+# 最小公倍数
+def lcm(x, y):
+    return (x * y) // math.gcd(x, y)
+
+# 拡張ユークリッドの互除法
+def extended_gcd(a, b):
+    if a == 0:
+        return b, 0, 1
+    else:
+        gcd, x, y = extended_gcd(b % a, a)
+        return (gcd, y - (b // a) * x, x)
+
+d = extended_gcd(e,lcm(p-1,q-1))[1]
+m = pow(c,d,n)
+
+# ゼロ埋めして512桁の16進数文字列に変換
+hex_string = "%0512x" % m 
+# 16進数文字列をバイトにデコード
+bytes_data = bytes.fromhex(hex_string)
+
+print(bytes_data)
+```
+
+長いので省略しましたが、変数には問題文にある数値を入れてください。
+
+Flagを得ることができました。
+
+余談ですが、最初はNumpyのpowerという関数で指数計算をしたのですが、何分経っても終わりませんでした。
+
+powはべき剰余計算が得意らしいですね。
 
 ---
 

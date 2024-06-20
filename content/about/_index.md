@@ -26,6 +26,8 @@ Blogは基本的に備忘録です。
 
 未登録ですが、情報処理安全確保支援士試験に合格しています。
 
+IKとは一個人を示します。
+
 ソースコードは[こちら](https://github.com/IK-20211125/ikbase.net)から
 
 ---
@@ -36,7 +38,7 @@ Blogは基本的に備忘録です。
 | --- | --- |
 | Email | ik@ikbase.net |
 | GitHub | [IK-20211125](https://github.com/IK-20211125) |
-| X | [@IK20240503](https://twitter.com/ikbasenet) |
+| X | [@ikbasenet](https://twitter.com/ikbasenet) |
 | Misskey | [@ikit](https://misskey.io/@ikit) |
 
 ---
