@@ -32,7 +32,7 @@ SECCON Beginners CTF 2024 に参加しました。そこで解くことができ
 
 ---
 
-## Safe Prime (crypt)
+## Safe Prime (crypto)
 
 ![ctf4b-safeprime.png](ctf4b-safeprime.png)
 
@@ -143,7 +143,7 @@ Flagを得ることができました。
 
 ---
 
-## math (crypt)
+## math (crypto)
 
 ![ctf4b-math.png](ctf4b-math.png)
 
