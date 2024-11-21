@@ -9,7 +9,7 @@ defaultContentLanguage = "ja"
 
 enableRobotsTXT = true
 paginate = 10
-summaryLength = 0
+summaryLength = 1
 
 googleAnalytics = "G-LVJE5P7QPR"
 
