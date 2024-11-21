@@ -13,6 +13,8 @@ summaryLength = 0
 
 googleAnalytics = "G-LVJE5P7QPR"
 
+timeout = "60s"
+
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
