@@ -16,6 +16,7 @@ IKがおすすめするセキュリティ系の書籍です。
 
 - [体系的に学ぶ 安全なWebアプリケーションの作り方 第2版](https://www.sbcr.jp/product/4797393163/)
 
+- [サイバーセキュリティ戦記](https://www.ric.co.jp/book/development/detail/2458)
 
 ---
 
